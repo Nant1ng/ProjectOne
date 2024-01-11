@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            Console.Title = "Calculation App";
             App.Run();
         }
     }
