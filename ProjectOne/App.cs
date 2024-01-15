@@ -1,4 +1,6 @@
-﻿namespace ProjectOne
+﻿using ProjectLibrary.Menu;
+
+namespace ProjectOne
 {
     public class App
     {
@@ -14,32 +16,38 @@
                 ██║     ██╔══██║██║     ██║     ██║   ██║██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
                 ╚██████╗██║  ██║███████╗╚██████╗╚██████╔╝███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
                  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-                                                                                                                   
+                 ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(@"
                                                     [1] Shapes
 
                                                   [2] Calculator
 
                                                [3] Rock Paper Scissors
 
-                                                     [0] Exit  
+                                                     [0] Exit
                 ");
                 Console.ResetColor();
 
                 char key = Console.ReadKey().KeyChar;
                 Console.Clear();
 
+                ShapesMenu shapes = new ShapesMenu();
+                CalculatorMenu calculator = new CalculatorMenu();
+                RPSMenu rockPaperScissors = new RPSMenu();
+
                 switch (key)
                 {
                     case '1':
-
+                        shapes.Menu();
                         break;
 
                     case '2':
-
+                        calculator.Menu();
                         break;
 
                     case '3':
-
+                        rockPaperScissors.Menu();
                         break;
 
                     case '0':
