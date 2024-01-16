@@ -1,6 +1,6 @@
 ﻿namespace ProjectLibrary.Enumeration
 {
-    public enum Shape
+    public enum TypeOfShape
     {
         Rectangle,
         Parallelogram,
