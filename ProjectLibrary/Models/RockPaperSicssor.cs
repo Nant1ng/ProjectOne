@@ -2,7 +2,7 @@
 
 namespace ProjectLibrary.Models
 {
-    public class Match
+    public class RockPaperSicssor
     {
         public int Id { get; set; }
         public RockPaperScissor PlayerChoice { get; set; }
@@ -10,7 +10,7 @@ namespace ProjectLibrary.Models
         public Result Result { get; set; }
         public DateOnly GameDate { get; set; }
 
-        public Match(RockPaperScissor playerChoice, RockPaperScissor computerChoice, Result result, DateOnly gameDate)
+        public RockPaperSicssor(RockPaperScissor playerChoice, RockPaperScissor computerChoice, Result result, DateOnly gameDate)
         {
             PlayerChoice = playerChoice;
             ComputerChoice = computerChoice;
