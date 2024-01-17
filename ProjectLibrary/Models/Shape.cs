@@ -14,14 +14,16 @@ namespace ProjectLibrary.Models
         public double Width { get; set; }
         public double Perimeter { get; set; }
         public double Area { get; set; }
+        public DateOnly CalculationDate { get; set; }
 
-        public Shape(TypeOfShape typeOfShape, double lenght, double width, double perimeter, double area)
+        public Shape(TypeOfShape typeOfShape, double lenght, double width, double perimeter, double area, DateOnly calculationDate)
         {
             TypeOfShape = typeOfShape;
             Lenght = lenght;
             Width = width;
             Perimeter = perimeter;
             Area = area;
+            CalculationDate = calculationDate;
         }
     }
 }

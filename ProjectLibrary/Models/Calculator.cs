@@ -14,13 +14,15 @@ namespace ProjectLibrary.Models
         public MathOperator MathOperator { get; set; }
         public decimal B { get; set; }
         public decimal Sum { get; set; }
+        public DateOnly CalculationDate { get; set; }
 
-        public Calculator(decimal a, MathOperator mathOperator, decimal b, decimal sum)
+        public Calculator(decimal a, MathOperator mathOperator, decimal b, decimal sum, DateOnly calculationDate)
         {
             A = a;
             MathOperator = mathOperator;
             B = b;
             Sum = sum;
+            CalculationDate = calculationDate;
         }
     }
 }
