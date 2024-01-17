@@ -2,7 +2,12 @@
 
 namespace ProjectLibrary.Models
 {
-    public class RockPaperSicssor
+    /// <summary>
+    /// Represents a single game of Rock Paper Scissors. 
+    /// It includes properties for tracking the player's choice, 
+    /// the computer's choice, the result of the game, and the date the game was played.
+    /// </summary>
+    public class RockPaperSicssorGame
     {
         public int Id { get; set; }
         public RockPaperScissor PlayerChoice { get; set; }
@@ -10,7 +15,7 @@ namespace ProjectLibrary.Models
         public Result Result { get; set; }
         public DateOnly GameDate { get; set; }
 
-        public RockPaperSicssor(RockPaperScissor playerChoice, RockPaperScissor computerChoice, Result result, DateOnly gameDate)
+        public RockPaperSicssorGame(RockPaperScissor playerChoice, RockPaperScissor computerChoice, Result result, DateOnly gameDate)
         {
             PlayerChoice = playerChoice;
             ComputerChoice = computerChoice;

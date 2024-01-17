@@ -1,6 +1,6 @@
 ﻿namespace ProjectLibrary.Enumeration
 {
-    public enum Operator
+    public enum MathOperator
     {
         Plus,
         Minus,
