@@ -11,4 +11,10 @@
     <ProjectReference Include="..\ProjectLibrary\ProjectLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

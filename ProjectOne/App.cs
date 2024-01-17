@@ -1,4 +1,7 @@
-﻿using ProjectLibrary.Menu;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using ProjectLibrary.Data;
+using ProjectLibrary.Menu;
 
 namespace ProjectOne
 {
@@ -6,6 +9,21 @@ namespace ProjectOne
     {
         public static void Run()
         {
+            // Boiler Plate Code
+            var builder = new ConfigurationBuilder()
+               .AddJsonFile($"Appsettings.json", true, true);
+            var config = builder.Build();
+
+            DbContextOptionsBuilder<AppDBContext> options = new DbContextOptionsBuilder<AppDBContext>();
+            var connectionString = config.GetConnectionString("DefaultConnection");
+            options.UseSqlServer(connectionString);
+
+            using (var dbContext = new AppDBContext(options.Options))
+            {
+                var dataPopulator = new DataPopulator();
+                dataPopulator.MigrateAndPopulate(dbContext);
+            }
+
             do
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -47,7 +65,7 @@ namespace ProjectOne
                         break;
 
                     case '3':
-                        rockPaperScissors.Menu();
+                        rockPaperScissors.Menu(options);
                         break;
 
                     case '0':
