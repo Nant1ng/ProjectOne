@@ -29,7 +29,24 @@ namespace ProjectLibrary.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RockPaperScissor",
+                name: "GameStatistics",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TotalGamesPlayed = table.Column<int>(type: "int", nullable: false),
+                    TotalWins = table.Column<int>(type: "int", nullable: false),
+                    TotalLoses = table.Column<int>(type: "int", nullable: false),
+                    TotalDraws = table.Column<int>(type: "int", nullable: false),
+                    AverageWins = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameStatistics", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RockPaperScissorGame",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -41,7 +58,7 @@ namespace ProjectLibrary.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RockPaperScissor", x => x.Id);
+                    table.PrimaryKey("PK_RockPaperScissorGame", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,7 +87,10 @@ namespace ProjectLibrary.Migrations
                 name: "Calculator");
 
             migrationBuilder.DropTable(
-                name: "RockPaperScissor");
+                name: "GameStatistics");
+
+            migrationBuilder.DropTable(
+                name: "RockPaperScissorGame");
 
             migrationBuilder.DropTable(
                 name: "Shape");

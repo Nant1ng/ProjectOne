@@ -6,7 +6,8 @@ namespace ProjectLibrary.Data
     public class AppDBContext : DbContext
     {
         public DbSet<Calculator> Calculator { get; set; }
-        public DbSet<RockPaperSicssor> RockPaperScissor { get; set; }
+        public DbSet<GameStatistics> GameStatistics { get; set; }
+        public DbSet<RockPaperSicssorGame> RockPaperScissorGame { get; set; }
         public DbSet<Shape> Shape { get; set; }
 
         public AppDBContext()
@@ -31,9 +32,9 @@ namespace ProjectLibrary.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Calculator>().Property(c => c.MathOperator).HasColumnType("tinyint");
-            modelBuilder.Entity<RockPaperSicssor>().Property(rps => rps.PlayerChoice).HasColumnType("tinyint");
-            modelBuilder.Entity<RockPaperSicssor>().Property(rps => rps.ComputerChoice).HasColumnType("tinyint");
-            modelBuilder.Entity<RockPaperSicssor>().Property(rps => rps.Result).HasColumnType("tinyint");
+            modelBuilder.Entity<RockPaperSicssorGame>().Property(rps => rps.PlayerChoice).HasColumnType("tinyint");
+            modelBuilder.Entity<RockPaperSicssorGame>().Property(rps => rps.ComputerChoice).HasColumnType("tinyint");
+            modelBuilder.Entity<RockPaperSicssorGame>().Property(rps => rps.Result).HasColumnType("tinyint");
             modelBuilder.Entity<Shape>().Property(s => s.TypeOfShape).HasColumnType("tinyint");
         }
     }

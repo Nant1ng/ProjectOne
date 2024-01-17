@@ -26,8 +26,8 @@ namespace ProjectLibrary.Data
         {
             DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 
-            if (!dbContext.RockPaperScissor.Any(rps => rps.Id == 1))
-                dbContext.RockPaperScissor.Add(new RockPaperSicssor(RockPaperScissor.Rock, RockPaperScissor.Rock, Result.Draw, today));
+            if (!dbContext.RockPaperScissorGame.Any(rps => rps.Id == 1))
+                dbContext.RockPaperScissorGame.Add(new RockPaperSicssorGame(RockPaperScissor.Rock, RockPaperScissor.Rock, Result.Draw, today));
         }
         //private void PopulateShape(AppDBContext dbContext)
         //{

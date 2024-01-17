@@ -12,7 +12,7 @@ using ProjectLibrary.Data;
 namespace ProjectLibrary.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20240117104829_InitialMigrate")]
+    [Migration("20240117181415_InitialMigrate")]
     partial class InitialMigrate
     {
         /// <inheritdoc />
@@ -53,7 +53,35 @@ namespace ProjectLibrary.Migrations
                     b.ToTable("Calculator");
                 });
 
-            modelBuilder.Entity("ProjectLibrary.Models.RockPaperSicssor", b =>
+            modelBuilder.Entity("ProjectLibrary.Models.GameStatistics", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("AverageWins")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TotalDraws")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalGamesPlayed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalLoses")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalWins")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GameStatistics");
+                });
+
+            modelBuilder.Entity("ProjectLibrary.Models.RockPaperSicssorGame", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +103,7 @@ namespace ProjectLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RockPaperScissor");
+                    b.ToTable("RockPaperScissorGame");
                 });
 
             modelBuilder.Entity("ProjectLibrary.Models.Shape", b =>

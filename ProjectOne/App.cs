@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using ProjectLibrary.Data;
 using ProjectLibrary.Menu;
+using ProjectLibrary.RPS;
 
 namespace ProjectOne
 {
@@ -22,6 +23,9 @@ namespace ProjectOne
             {
                 var dataPopulator = new DataPopulator();
                 dataPopulator.MigrateAndPopulate(dbContext);
+
+                UpdateStats statsUpdater = new UpdateStats();
+                statsUpdater.UpdateGameStats(options);
             }
 
             do
