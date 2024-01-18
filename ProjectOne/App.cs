@@ -41,13 +41,13 @@ namespace ProjectOne
                  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(@"
-                                                    [1] Shapes
+                                                        [1] Shapes
 
-                                                  [2] Calculator
+                                                      [2] Calculator
 
-                                               [3] Rock Paper Scissors
+                                                  [3] Rock Paper Scissors
 
-                                                     [0] Exit
+                                                        [0] Exit
                 ");
                 Console.ResetColor();
 
@@ -65,7 +65,7 @@ namespace ProjectOne
                         break;
 
                     case '2':
-                        calculator.Menu();
+                        calculator.Menu(options);
                         break;
 
                     case '3':
