@@ -27,9 +27,11 @@ namespace ProjectLibrary.Menu
 
                                                  [2] See Previous Calculations
 
-                                                  [3] Change a Calculations
+                                                   [3] Change a Calculation
 
-                                                  [4] Delete a Calculations
+                                                   [4] Delete a Calculation
+
+                                                   [5] Recover a Calculation
 
                                                           [0] Exit
 
@@ -39,20 +41,32 @@ namespace ProjectLibrary.Menu
                 char key = Console.ReadKey().KeyChar;
                 Console.Clear();
 
-                StartCalculation calc = new StartCalculation();
+                CreateCalculation createCalc = new CreateCalculation();
+                ShowCalculation readCalc = new ShowCalculation();
+                UpdateCalculation updateCalc = new UpdateCalculation();
+                DeleteCalculation deleteCalc = new DeleteCalculation();
+                RecoverCalculation recoverCalc = new RecoverCalculation();
 
                 switch (key)
                 {
                     case '1':
-                        calc.Start(options);
+                        createCalc.Create(options);
                         break;
 
                     case '2':
-
+                        readCalc.Read(options);
                         break;
 
                     case '3':
+                        updateCalc.Update(options);
+                        break;
 
+                    case '4':
+                        deleteCalc.Delete(options);
+                        break;
+
+                    case '5':
+                        recoverCalc.Recover(options);
                         break;
 
                     case '0':

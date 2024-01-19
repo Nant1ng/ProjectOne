@@ -12,14 +12,17 @@ namespace ProjectLibrary.Models
         public int Id { get; set; }
         public decimal A { get; set; }
         public MathOperator MathOperator { get; set; }
-        public decimal B { get; set; }
+        public char MathOperatorSymbol { get; set; }
+        public decimal? B { get; set; }
         public decimal Sum { get; set; }
         public DateOnly CalculationDate { get; set; }
+        public bool IsActive { get; set; } = true;
 
-        public Calculator(decimal a, MathOperator mathOperator, decimal b, decimal sum, DateOnly calculationDate)
+        public Calculator(decimal a, MathOperator mathOperator, char mathOperatorSymbol, decimal? b, decimal sum, DateOnly calculationDate)
         {
             A = a;
             MathOperator = mathOperator;
+            MathOperatorSymbol = mathOperatorSymbol;
             B = b;
             Sum = sum;
             CalculationDate = calculationDate;

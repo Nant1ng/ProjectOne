@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectLibrary.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigrate : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,9 +19,11 @@ namespace ProjectLibrary.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     A = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MathOperator = table.Column<byte>(type: "tinyint", nullable: false),
-                    B = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MathOperatorSymbol = table.Column<string>(type: "nvarchar(1)", nullable: false),
+                    B = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Sum = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CalculationDate = table.Column<DateOnly>(type: "date", nullable: false)
+                    CalculationDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,9 +72,12 @@ namespace ProjectLibrary.Migrations
                     TypeOfShape = table.Column<byte>(type: "tinyint", nullable: false),
                     Lenght = table.Column<double>(type: "float", nullable: false),
                     Width = table.Column<double>(type: "float", nullable: false),
+                    CathetusLeft = table.Column<double>(type: "float", nullable: true),
+                    CathetusRight = table.Column<double>(type: "float", nullable: true),
                     Perimeter = table.Column<double>(type: "float", nullable: false),
                     Area = table.Column<double>(type: "float", nullable: false),
-                    CalculationDate = table.Column<DateOnly>(type: "date", nullable: false)
+                    CalculationDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
