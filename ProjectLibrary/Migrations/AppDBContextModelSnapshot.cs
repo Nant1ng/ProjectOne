@@ -33,14 +33,21 @@ namespace ProjectLibrary.Migrations
                     b.Property<decimal>("A")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("B")
+                    b.Property<decimal?>("B")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateOnly>("CalculationDate")
                         .HasColumnType("date");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<byte>("MathOperator")
                         .HasColumnType("tinyint");
+
+                    b.Property<string>("MathOperatorSymbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<decimal>("Sum")
                         .HasColumnType("decimal(18,2)");
@@ -116,6 +123,15 @@ namespace ProjectLibrary.Migrations
 
                     b.Property<DateOnly>("CalculationDate")
                         .HasColumnType("date");
+
+                    b.Property<double?>("CathetusLeft")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("CathetusRight")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<double>("Lenght")
                         .HasColumnType("float");

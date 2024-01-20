@@ -1,55 +1,72 @@
-﻿namespace ProjectLibrary.Menu
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectLibrary.Calc;
+using ProjectLibrary.Data;
+
+namespace ProjectLibrary.Menu
 {
     public class CalculatorMenu
     {
-        public void Menu()
+        public void Menu(DbContextOptionsBuilder<AppDBContext> options)
         {
             bool isRunning = true;
             do
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine(@"
-       +         ██████╗ █████╗ ██╗      ██████╗██╗   ██╗██╗      █████╗ ████████╗ ██████╗ ██████╗      /
-                ██╔════╝██╔══██╗██║     ██╔════╝██║   ██║██║     ██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗     
-       -        ██║     ███████║██║     ██║     ██║   ██║██║     ███████║   ██║   ██║   ██║██████╔╝     √
-                ██║     ██╔══██║██║     ██║     ██║   ██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗     
-       *        ╚██████╗██║  ██║███████╗╚██████╗╚██████╔╝███████╗██║  ██║   ██║   ╚██████╔╝██║  ██║     %
-                 ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝     
+          +         ██████╗ █████╗ ██╗      ██████╗██╗   ██╗██╗      █████╗ ████████╗ ██████╗ ██████╗      /
+                   ██╔════╝██╔══██╗██║     ██╔════╝██║   ██║██║     ██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗     
+          -        ██║     ███████║██║     ██║     ██║   ██║██║     ███████║   ██║   ██║   ██║██████╔╝     √
+                   ██║     ██╔══██║██║     ██║     ██║   ██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗     
+          *        ╚██████╗██║  ██║███████╗╚██████╗╚██████╔╝███████╗██║  ██║   ██║   ╚██████╔╝██║  ██║     %
+                    ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝     
 
                  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(@"
-                                                    [1] Plus
+                                                   [1] Make a Calculation
 
-                                                    [2] Minus
+                                                 [2] See Previous Calculations
 
-                                                    [3] Times
+                                                   [3] Change a Calculation
 
-                                                   [4] Division
+                                                   [4] Delete a Calculation
 
-                                                  [5] Square Root
+                                                   [5] Recover a Calculation
 
-                                                    [6] Modulus
+                                                          [0] Exit
 
-                                                     [0] Exit
                 ");
                 Console.ResetColor();
 
                 char key = Console.ReadKey().KeyChar;
                 Console.Clear();
 
+                CreateCalculation createCalc = new CreateCalculation();
+                ShowCalculation readCalc = new ShowCalculation();
+                UpdateCalculation updateCalc = new UpdateCalculation();
+                DeleteCalculation deleteCalc = new DeleteCalculation();
+                RecoverCalculation recoverCalc = new RecoverCalculation();
+
                 switch (key)
                 {
                     case '1':
-
+                        createCalc.Create(options);
                         break;
 
                     case '2':
-
+                        readCalc.Read(options);
                         break;
 
                     case '3':
+                        updateCalc.Update(options);
+                        break;
 
+                    case '4':
+                        deleteCalc.Delete(options);
+                        break;
+
+                    case '5':
+                        recoverCalc.Recover(options);
                         break;
 
                     case '0':

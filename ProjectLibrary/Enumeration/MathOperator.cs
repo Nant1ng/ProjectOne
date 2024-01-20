@@ -2,8 +2,8 @@
 {
     public enum MathOperator
     {
-        Plus,
-        Minus,
+        Addition,
+        Subtraction,
         Times,
         Division,
         SquareRoot,
