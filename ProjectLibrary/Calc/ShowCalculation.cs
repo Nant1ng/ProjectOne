@@ -16,9 +16,9 @@ namespace ProjectLibrary.Calc
                 foreach (Calculator c in dbContext.Calculator.Where(c => c.IsActive == true))
                 {
                     if (c.MathOperator == MathOperator.SquareRoot)
-                        Console.WriteLine($"A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, Sum: {c.Sum}, Date: {c.CalculationDate}");
+                        Console.WriteLine($"A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, Sum: {c.Sum:F2}, Date: {c.CalculationDate}");
                     else
-                        Console.WriteLine($"A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum}, Date: {c.CalculationDate}");
+                        Console.WriteLine($"A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum:F2}, Date: {c.CalculationDate}");
                 }
 
                 Console.WriteLine();

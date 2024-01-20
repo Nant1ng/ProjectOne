@@ -70,9 +70,8 @@ namespace ProjectLibrary.Calc
                         {
                             Console.WriteLine();
                             Console.Write("Enter a second number: ");
-                            string? secondInput = Console.ReadLine();
 
-                            if (decimal.TryParse(secondInput, out decimal b))
+                            if (decimal.TryParse(Console.ReadLine(), out decimal b))
                             {
                                 Console.WriteLine($"{a} {displayMathOperator} {b}");
 
@@ -88,27 +87,27 @@ namespace ProjectLibrary.Calc
                                 if (mathOperator == MathOperator.Addition)
                                 {
                                     sum = addition.Calc(a, b);
-                                    Console.WriteLine($"Answer: {sum}");
+                                    Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Subtraction)
                                 {
                                     sum = subtraction.Calc(a, b);
-                                    Console.WriteLine($"Answer: {sum}");
+                                    Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Times)
                                 {
                                     sum = times.Calc(a, b);
-                                    Console.WriteLine($"Answer: {sum}");
+                                    Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Division)
                                 {
                                     sum = division.Calc(a, b);
-                                    Console.WriteLine($"Answer: {sum}");
+                                    Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Modulus)
                                 {
                                     sum = modulus.Calc(a, b);
-                                    Console.WriteLine($"Answer: {sum}");
+                                    Console.WriteLine($"Answer: {sum:F2}");
                                 }
 
                                 Calculator newCalculator = new Calculator(a, mathOperator, displayMathOperator, b, sum, today);
@@ -149,7 +148,7 @@ namespace ProjectLibrary.Calc
 
                             Console.WriteLine();
                             Console.WriteLine($"√{a}");
-                            Console.WriteLine($"Answer: {sum}");
+                            Console.WriteLine($"Answer: {sum:F2}");
 
                             Calculator newCalculator = new Calculator(a, mathOperator, displayMathOperator, null, sum, today);
                             dbContext.Calculator.Add(newCalculator);

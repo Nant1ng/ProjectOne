@@ -37,12 +37,12 @@ namespace ProjectLibrary.Calc
                             dbContext.SaveChanges();
 
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine($"Successfully Soft-Deleted Calculation with Id {calculationId}.");
+                            Console.WriteLine($"Successfully Soft-Deleted a Calculation with Id {calculationId}.");
                             Console.ResetColor();
 
                             GoAgain goAgain = new GoAgain();
 
-                            string message = "Do you want to Delete another calculation?";
+                            string message = "Do you want to Delete another Calculation?";
                             string restart = goAgain.Restart(message);
 
                             if (restart == "yes")

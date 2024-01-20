@@ -29,11 +29,11 @@ namespace ProjectLibrary.Calc
 
                     if (int.TryParse(Console.ReadLine(), out int calculationId))
                     {
-                        Calculator? calculationToDelete = dbContext.Calculator.Find(calculationId);
+                        Calculator? calculationToRecover = dbContext.Calculator.Find(calculationId);
 
-                        if (calculationToDelete != null && calculationToDelete.IsActive == false)
+                        if (calculationToRecover != null && calculationToRecover.IsActive == false)
                         {
-                            calculationToDelete.IsActive = true;
+                            calculationToRecover.IsActive = true;
                             dbContext.SaveChanges();
 
                             Console.ForegroundColor = ConsoleColor.Green;
