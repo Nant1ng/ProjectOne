@@ -12,15 +12,20 @@ namespace ProjectLibrary.Models
         public TypeOfShape TypeOfShape { get; set; }
         public double Lenght { get; set; }
         public double Width { get; set; }
+        public double? CathetusLeft { get; set; }
+        public double? CathetusRight { get; set; }
         public double Perimeter { get; set; }
         public double Area { get; set; }
         public DateOnly CalculationDate { get; set; }
+        public bool IsActive { get; set; } = true;
 
-        public Shape(TypeOfShape typeOfShape, double lenght, double width, double perimeter, double area, DateOnly calculationDate)
+        public Shape(TypeOfShape typeOfShape, double lenght, double width, double? cathetusLeft, double? cathetusRight, double perimeter, double area, DateOnly calculationDate)
         {
             TypeOfShape = typeOfShape;
             Lenght = lenght;
             Width = width;
+            CathetusLeft = cathetusLeft;
+            CathetusRight = cathetusRight;
             Perimeter = perimeter;
             Area = area;
             CalculationDate = calculationDate;

@@ -61,7 +61,7 @@ namespace ProjectOne
                 switch (key)
                 {
                     case '1':
-                        shapes.Menu();
+                        shapes.Menu(options);
                         break;
 
                     case '2':
