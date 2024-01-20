@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectLibrary.Data;
+using ProjectLibrary.Enumeration;
 using ProjectLibrary.Models;
 
 namespace ProjectLibrary.Calc
@@ -16,10 +17,15 @@ namespace ProjectLibrary.Calc
                     Console.WriteLine("Recover a Calculation.");
 
                     foreach (Calculator c in dbContext.Calculator.Where(c => !c.IsActive))
-                        Console.WriteLine($"Id: {c.Id}, A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum}, Date: {c.CalculationDate}, Active: {c.IsActive}");
+                    {
+                        if (c.MathOperator == MathOperator.SquareRoot)
+                            Console.WriteLine($"Id: {c.Id}, A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, Sum: {c.Sum}, Date: {c.CalculationDate}, Active: {c.IsActive}");
+                        else
+                            Console.WriteLine($"A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum}, Date: {c.CalculationDate}, Active: {c.IsActive}");
+                    }
 
                     Console.WriteLine();
-                    Console.WriteLine("Enter the Id of a Calculation you want to Recover: ");
+                    Console.Write("Enter the Id of a Calculation you want to Recover: ");
 
                     if (int.TryParse(Console.ReadLine(), out int calculationId))
                     {

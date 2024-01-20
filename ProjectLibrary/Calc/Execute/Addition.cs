@@ -1,6 +1,8 @@
-﻿namespace ProjectLibrary.Calc.Execute
+﻿using ProjectLibrary.Interface;
+
+namespace ProjectLibrary.Calc.Execute
 {
-    public class Addition
+    public class Addition : ICalc
     {
         public decimal Calc(decimal a, decimal b)
         {

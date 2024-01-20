@@ -20,6 +20,7 @@ namespace ProjectLibrary.Calc
                     else
                         Console.WriteLine($"A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum}, Date: {c.CalculationDate}");
                 }
+
                 Console.WriteLine();
                 Console.WriteLine("Press any key to go back.");
                 Console.ReadKey();

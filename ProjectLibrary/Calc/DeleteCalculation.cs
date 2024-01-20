@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectLibrary.Data;
+using ProjectLibrary.Enumeration;
 using ProjectLibrary.Models;
 
 namespace ProjectLibrary.Calc
@@ -15,11 +16,16 @@ namespace ProjectLibrary.Calc
                 {
                     Console.WriteLine("Delete a Calculation.");
 
-                    foreach (Calculator c in dbContext.Calculator.Where(c => c.IsActive == true))
-                        Console.WriteLine($"Id: {c.Id}, A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum}, Date: {c.CalculationDate}, Active: {c.IsActive}");
+                    foreach (Calculator c in dbContext.Calculator.Where(c => c.IsActive))
+                    {
+                        if (c.MathOperator == MathOperator.SquareRoot)
+                            Console.WriteLine($"Id: {c.Id}, A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, Sum: {c.Sum}, Date: {c.CalculationDate}, Active: {c.IsActive}");
+                        else
+                            Console.WriteLine($"Id: {c.Id}, A: {c.A}, Math Operator: {c.MathOperator} {c.MathOperatorSymbol}, B: {c.B}, Sum: {c.Sum}, Date: {c.CalculationDate}, Active: {c.IsActive}");
+                    }
 
                     Console.WriteLine();
-                    Console.WriteLine("Enter the Id of a Calculation you want to Delete: ");
+                    Console.Write("Enter the Id of a Calculation you want to Delete: ");
 
                     if (int.TryParse(Console.ReadLine(), out int calculationId))
                     {

@@ -15,19 +15,17 @@ namespace ProjectLibrary.Calc
                 bool isRunning = true;
                 do
                 {
+                    Console.WriteLine("Time to do The Math!");
                     Console.Write("Enter a Number: ");
-                    string? firstInput = Console.ReadLine();
 
-                    if (decimal.TryParse(firstInput, out decimal a))
+                    if (decimal.TryParse(Console.ReadLine(), out decimal a))
                     {
-                        Console.WriteLine("Choose an operator:");
+                        Console.WriteLine("Choose an Operator:");
 
                         int operatorNumber = 0;
 
                         foreach (MathOperator mo in Enum.GetValues(typeof(MathOperator)))
-                        {
                             Console.WriteLine($"{++operatorNumber} - {mo}");
-                        }
 
                         char? operatorInput = Console.ReadKey().KeyChar;
 
@@ -117,6 +115,10 @@ namespace ProjectLibrary.Calc
                                 GoAgain goAgain = new GoAgain();
                                 dbContext.Calculator.Add(newCalculator);
                                 dbContext.SaveChanges();
+
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine($"Successfully Created a Calculation.");
+                                Console.ResetColor();
 
                                 string message = "Do you want to calculate something else?";
                                 string restart = goAgain.Restart(message);
