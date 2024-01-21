@@ -28,9 +28,11 @@ namespace ProjectLibrary.Geometry
                     }
 
                     Console.WriteLine();
+                    Console.WriteLine("Write exit if you want to go back.");
                     Console.Write("Enter a Id of a Geometry Calculation you want to Update: ");
+                    string? userInput = Console.ReadLine();
 
-                    if (int.TryParse(Console.ReadLine(), out int shapeId))
+                    if (int.TryParse(userInput, out int shapeId))
                     {
                         Shape? shapeToUpdate = dbContext.Shape.Find(shapeId);
 
@@ -70,12 +72,14 @@ namespace ProjectLibrary.Geometry
                             {
                                 Console.WriteLine();
                                 Console.Write("Enter the new Lenght: ");
+                                string? firstNumberInput = Console.ReadLine();
 
-                                if (double.TryParse(Console.ReadLine(), out double newLenght) && newLenght > 0)
+                                if (double.TryParse(firstNumberInput, out double newLenght) && newLenght > 0)
                                 {
                                     Console.WriteLine("Enter the new Width: ");
+                                    string? secondNumberInput = Console.ReadLine();
 
-                                    if (double.TryParse(Console.ReadLine(), out double newWidth) && newWidth > 0)
+                                    if (double.TryParse(secondNumberInput, out double newWidth) && newWidth > 0)
                                     {
                                         RectanglePerimeter rectanglePerimeter = new RectanglePerimeter();
                                         RectangleArea rectangleArea = new RectangleArea();
@@ -127,6 +131,11 @@ namespace ProjectLibrary.Geometry
                                             Console.Clear();
                                         }
                                     }
+                                    else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        isRunning = false;
+                                        Console.Clear();
+                                    }
                                     else
                                     {
                                         Console.Clear();
@@ -134,6 +143,11 @@ namespace ProjectLibrary.Geometry
                                         Console.WriteLine("Invalid input: Please enter a valid number.");
                                         Console.ResetColor();
                                     }
+                                }
+                                else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    isRunning = false;
+                                    Console.Clear();
                                 }
                                 else
                                 {
@@ -147,16 +161,19 @@ namespace ProjectLibrary.Geometry
                             {
                                 Console.WriteLine();
                                 Console.Write("Enter the new Lenght: ");
+                                string? firstNumberInput = Console.ReadLine();
 
-                                if (double.TryParse(Console.ReadLine(), out double newLenght) && newLenght > 0)
+                                if (double.TryParse(firstNumberInput, out double newLenght) && newLenght > 0)
                                 {
                                     Console.Write("Enter the new Width: ");
+                                    string? secondNumberInput = Console.ReadLine();
 
-                                    if (double.TryParse(Console.ReadLine(), out double newWidth) && newWidth > 0)
+                                    if (double.TryParse(secondNumberInput, out double newWidth) && newWidth > 0)
                                     {
                                         Console.Write("Enter the new Left Cathetus: ");
+                                        string? thirdNumberInput = Console.ReadLine();
 
-                                        if (double.TryParse(Console.ReadLine(), out double newCathetusLeft) && newCathetusLeft > 0)
+                                        if (double.TryParse(thirdNumberInput, out double newCathetusLeft) && newCathetusLeft > 0)
                                         {
                                             ParallelogramPerimeter parallelogramPerimeter = new ParallelogramPerimeter();
                                             ParallelogramArea parallelogramArea = new ParallelogramArea();
@@ -195,6 +212,11 @@ namespace ProjectLibrary.Geometry
                                                 Console.Clear();
                                             }
                                         }
+                                        else if (string.Equals(thirdNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            isRunning = false;
+                                            Console.Clear();
+                                        }
                                         else
                                         {
                                             Console.Clear();
@@ -203,6 +225,11 @@ namespace ProjectLibrary.Geometry
                                             Console.ResetColor();
                                         }
                                     }
+                                    else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        isRunning = false;
+                                        Console.Clear();
+                                    }
                                     else
                                     {
                                         Console.Clear();
@@ -210,6 +237,11 @@ namespace ProjectLibrary.Geometry
                                         Console.WriteLine("Invalid input: Please enter a valid number.");
                                         Console.ResetColor();
                                     }
+                                }
+                                else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    isRunning = false;
+                                    Console.Clear();
                                 }
                                 else
                                 {
@@ -223,20 +255,24 @@ namespace ProjectLibrary.Geometry
                             {
                                 Console.WriteLine();
                                 Console.Write("Enter the new Lenght: ");
+                                string? firstNumberInput = Console.ReadLine();
 
-                                if (double.TryParse(Console.ReadLine(), out double newLenght) && newLenght > 0)
+                                if (double.TryParse(firstNumberInput, out double newLenght) && newLenght > 0)
                                 {
                                     Console.Write("Enter the new Width: ");
+                                    string? secondNumberInput = Console.ReadLine();
 
-                                    if (double.TryParse(Console.ReadLine(), out double newWidth) && newWidth > 0)
+                                    if (double.TryParse(secondNumberInput, out double newWidth) && newWidth > 0)
                                     {
                                         Console.Write("Enter the new Left Cathetus: ");
+                                        string? thirdNumberInput = Console.ReadLine();
 
-                                        if (double.TryParse(Console.ReadLine(), out double newCathetusLeft) && newCathetusLeft > 0)
+                                        if (double.TryParse(thirdNumberInput, out double newCathetusLeft) && newCathetusLeft > 0)
                                         {
                                             Console.WriteLine("Enter the new Right Cathetus: ");
+                                            string? fourthNumberInput = Console.ReadLine();
 
-                                            if (double.TryParse(Console.ReadLine(), out double newCathetusRight) && newCathetusRight > 0)
+                                            if (double.TryParse(fourthNumberInput, out double newCathetusRight) && newCathetusRight > 0)
                                             {
                                                 TrianglePerimeter trianglePerimeter = new TrianglePerimeter();
                                                 TriangleArea triangleArea = new TriangleArea();
@@ -275,6 +311,11 @@ namespace ProjectLibrary.Geometry
                                                     Console.Clear();
                                                 }
                                             }
+                                            else if (string.Equals(fourthNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                isRunning = false;
+                                                Console.Clear();
+                                            }
                                             else
                                             {
                                                 Console.Clear();
@@ -282,6 +323,11 @@ namespace ProjectLibrary.Geometry
                                                 Console.WriteLine("Invalid input: Please enter a valid number.");
                                                 Console.ResetColor();
                                             }
+                                        }
+                                        else if (string.Equals(thirdNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            isRunning = false;
+                                            Console.Clear();
                                         }
                                         else
                                         {
@@ -291,6 +337,11 @@ namespace ProjectLibrary.Geometry
                                             Console.ResetColor();
                                         }
                                     }
+                                    else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        isRunning = false;
+                                        Console.Clear();
+                                    }
                                     else
                                     {
                                         Console.Clear();
@@ -298,6 +349,11 @@ namespace ProjectLibrary.Geometry
                                         Console.WriteLine("Invalid input: Please enter a valid number.");
                                         Console.ResetColor();
                                     }
+                                }
+                                else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    isRunning = false;
+                                    Console.Clear();
                                 }
                                 else
                                 {
@@ -315,6 +371,11 @@ namespace ProjectLibrary.Geometry
                             Console.WriteLine($"No Active Calculation found with Id {shapeId}");
                             Console.ResetColor();
                         }
+                    }
+                    else if (string.Equals(userInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {

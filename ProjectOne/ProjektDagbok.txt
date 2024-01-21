@@ -1,0 +1,38 @@
+Projekt Dagbok. 
+
+2024-01-10:
+	Marcus kom och presenterade sin idé om sin app som han ville ha; en app som har 3 "appar" i en: Miniräknare, Sten Sax & Påse och 	Shapes. Samt så fick jag en lista med krav som han har för sin app, så jag läste igenom listan flera gånger om dagen för att se om 	jag skulle fastna på något eller inte riktigt förstod något i kraven men jag kände rent spontant att det ej var några 	konstigheter, förutom att han hade skrivit att den ska vara "snygg" men inte gett något exempel på vad snyggt är enligt honom. Så 	planen är att jag ska prata med honom och fråga, vilka färger han vill att appen ska ha, vad den ska heta samt vilket språk den 	ska vara på, förmodligen så kommer det vara på svenska eller engelska, antar jag.
+
+2024-01-11:
+	Började med att fråga kunden Marcus de här frågorna: 
+		1. Vilket språk ska appen vara på? 
+		2. Vad ska appen heta? 
+		3. Vilka färger vill du att den ska ha?
+	Hans svar: 
+		1. Engelska
+		2. Calculation
+		3. OK = grönt, Fel meddlande = rött, Han gillar blått. 
+	
+	Visade Marcus de olika blåa färgerna som finns i vår fantastiska Console... Blue, DarkBlue, Cyan och DarkCyan. Han gillade 	DarkCyan mest så det kommer bli att jag kör på det i huvudmenyns logotyp. Samt så har jag även fixat en git-repo till projektet, 	ett "Class Library" och fixat lite mappstrukturer. Har även påbörjat med att skapa huvudmenyn.
+
+2024-01-15:
+	Jobbade mycket med UI och blev klar med alla mina menyer, samt så la jag till Match-entity och enums Result och RockPaperScissor.
+	Allt gick väldigt bra samt så blev jag jättenöjd med min UI, även fast det tog lite mycket tid.
+
+2024-01-16:
+	La till flera enums, Operator och Shape Enum. Sedan la jag även till två entities Calculator och Shapes, sedan så ändrade jag namn 	på entity Match till RockPaperSicssor, kändes lite bättre, gillade ej Match. Senare under dagen så kände jag för att ändra namn på 	två enums, Operator blev MathOperator och Shape blev TypeOfShape. Märkte att jag hade skrivit Shapes istället för Shape på entity-	namnet så ändrade på det till Shape, samt så la jag till Summary-taggar och Constructor till mina entities. Är lite fundersam över 	Shape men så ska tänka lite hur jag ska göra för att få den så bra som möjligt. Tänker mest på omkretsen för en triangel så tänker 	om man ska ha SideOne och SideTwo för att då kunna räkna omkretsen på en triangel eftersom att alla sidorna på en triangel sällan 	är lika långa om det inte är en likbent triangel, men antar att det inte är det eftersom Marcus (kunden) inte har sagt det. Så 	tänker att jag får göra att SideOne och SideTwo som standard och när det är en triangels omkrets som räknas så får man ändra på de 	värdena då.
+
+2024-01-17:
+	Är fortfarande lite fundersam över Shape, så tänker att jag får kolla med några kollegor (klasskamrater) hur de hade gjort och vad 	de tänker om min idé om en triangels omkrets. Blev helt klar med Sten, Sax, Påse, samt skapade även en återanvändbar Restart-metod 	som jag blev väldigt nöjd med. La till datum till Calculator och Shape entitet, hade glömt det. Blev även klar med Create och Read 	på Calculator.
+
+2024-01-18:
+	Hade redovisning för Marcus och allt gick bra, vilket var skönt. Men jag märkte en liten bugg med roten ur. Jag löste det direkt 	genom att göra om databasen och gjorde B som nullable, för annars var det ett tomt fält när man valde roten ur. Ändrade också mina 	shape-entiteter så att jag blev nöjd med dem.
+
+2024-01-19:
+	Gjorde klart Delete, Recover och förbättrade min Read för Calculator. Gjorde en Recover-funktion eftersom programmet bara tillåter 	en "soft delete", det vill säga, man raderar aldrig något helt och hållet.
+
+2024-01-20:
+	Blev klar med Update för Calculator, så hela CRUD är klar för den. Lade även till ett interface ICalc. Blev även klar med hela 	CRUD för Shapes. Gjorde också så att numren formateras till att bara ha max två decimaler, samt fixade lite stavfel här och där.
+
+2024-01-21: 
+	Gjorde lite små ändringare här och där, samt gjorde en ReadMe-fil. Trodde deadline var idag  23:59 men det var idag 00:00, så 	hoppas kunden inte blir allt för onöjd med det.

@@ -15,6 +15,8 @@ namespace ProjectLibrary.Geometry
                 do
                 {
                     Console.WriteLine("Recover a Geometry Calculation.");
+                    Console.WriteLine("Write exit if you want to go back.");
+                    Console.WriteLine();
 
                     foreach (Shape s in dbContext.Shape.Where(s => !s.IsActive))
                     {
@@ -28,8 +30,9 @@ namespace ProjectLibrary.Geometry
 
                     Console.WriteLine();
                     Console.Write("Enter the Id of the Geometry Calculation you want to Recover: ");
+                    string? userInput = Console.ReadLine();
 
-                    if (int.TryParse(Console.ReadLine(), out int geometryCalculationId))
+                    if (int.TryParse(userInput, out int geometryCalculationId))
                     {
                         Shape? shapeToRecover = dbContext.Shape.Find(geometryCalculationId);
 
@@ -62,6 +65,11 @@ namespace ProjectLibrary.Geometry
                             Console.WriteLine($"No InActive Geometry Calculation found with Id {geometryCalculationId}");
                             Console.ResetColor();
                         }
+                    }
+                    else if (string.Equals(userInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {

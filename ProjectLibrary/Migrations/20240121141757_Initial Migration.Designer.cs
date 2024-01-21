@@ -12,7 +12,7 @@ using ProjectLibrary.Data;
 namespace ProjectLibrary.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20240119202204_Initial Migration")]
+    [Migration("20240121141757_Initial Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

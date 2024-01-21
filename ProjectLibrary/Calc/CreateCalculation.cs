@@ -16,9 +16,13 @@ namespace ProjectLibrary.Calc
                 do
                 {
                     Console.WriteLine("Time to do The Math!");
+                    Console.WriteLine("Write exit if you want to go back.");
+                    Console.WriteLine();
                     Console.Write("Enter a Number: ");
 
-                    if (decimal.TryParse(Console.ReadLine(), out decimal a))
+                    string? firstNumberInput = Console.ReadLine();
+
+                    if (decimal.TryParse(firstNumberInput, out decimal a))
                     {
                         Console.WriteLine("Choose an Operator:");
 
@@ -51,12 +55,16 @@ namespace ProjectLibrary.Calc
                                 displayMathOperator = '/';
                                 break;
                             case '5':
-                                mathOperator = MathOperator.SquareRoot;
+                                mathOperator = MathOperator.NthSquareRoot;
                                 displayMathOperator = '√';
                                 break;
                             case '6':
                                 mathOperator = MathOperator.Modulus;
                                 displayMathOperator = '%';
+                                break;
+                            case '7':
+                                mathOperator = MathOperator.SquareRoot;
+                                displayMathOperator = '√';
                                 break;
                             default:
                                 Console.Clear();
@@ -70,43 +78,51 @@ namespace ProjectLibrary.Calc
                         {
                             Console.WriteLine();
                             Console.Write("Enter a second number: ");
+                            string? secondNumberInput = Console.ReadLine();
 
-                            if (decimal.TryParse(Console.ReadLine(), out decimal b))
+                            if (decimal.TryParse(secondNumberInput, out decimal b))
                             {
                                 Console.WriteLine($"{a} {displayMathOperator} {b}");
 
-                                Addition addition = new Addition();
-                                Subtraction subtraction = new Subtraction();
-                                Times times = new Times();
-                                Division division = new Division();
-                                Modulus modulus = new Modulus();
+                                CalcStrategy calcStrategy = new CalcStrategy();
 
                                 decimal sum = 0;
                                 DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 
                                 if (mathOperator == MathOperator.Addition)
                                 {
-                                    sum = addition.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Addition());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Subtraction)
                                 {
-                                    sum = subtraction.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Subtraction());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Times)
                                 {
-                                    sum = times.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Times());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Division)
                                 {
-                                    sum = division.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Division());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
+                                    Console.WriteLine($"Answer: {sum:F2}");
+                                }
+                                else if (mathOperator == MathOperator.NthSquareRoot)
+                                {
+                                    calcStrategy.setCalcStrategy(new NthSquareRoot());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Modulus)
                                 {
-                                    sum = modulus.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Modulus());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
 
@@ -129,6 +145,11 @@ namespace ProjectLibrary.Calc
                                     isRunning = false;
                                     Console.Clear();
                                 }
+                            }
+                            else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
                             }
                             else
                             {
@@ -165,6 +186,11 @@ namespace ProjectLibrary.Calc
                                 Console.Clear();
                             }
                         }
+                    }
+                    else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {

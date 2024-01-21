@@ -16,6 +16,9 @@ namespace ProjectLibrary.Calc
                 do
                 {
                     Console.WriteLine("Update a Calculation.");
+                    Console.WriteLine("Write exit if you want to go back.");
+                    Console.WriteLine();
+
                     foreach (Calculator c in dbContext.Calculator.Where(c => c.IsActive == true))
                     {
                         if (c.MathOperator == MathOperator.SquareRoot)
@@ -27,16 +30,19 @@ namespace ProjectLibrary.Calc
                     Console.WriteLine();
                     Console.Write("Enter a Id of a Calculation you want to Update: ");
 
-                    if (int.TryParse(Console.ReadLine(), out int calculationId))
+                    string? userInput = Console.ReadLine();
+
+                    if (int.TryParse(userInput, out int calculationId))
                     {
                         Calculator? calculationToUpdate = dbContext.Calculator.Find(calculationId);
 
-                        if (calculationToUpdate != null && calculationToUpdate.IsActive == true)
+                        if (calculationToUpdate != null && calculationToUpdate.IsActive)
                         {
                             Console.WriteLine($"Update Calculation with Id {calculationId}");
                             Console.Write("Enter a number: ");
+                            string? firstNumberInput = Console.ReadLine();
 
-                            if (decimal.TryParse(Console.ReadLine(), out decimal newA))
+                            if (decimal.TryParse(firstNumberInput, out decimal newA))
                             {
                                 Console.WriteLine("Choose an Operator:");
 
@@ -69,12 +75,16 @@ namespace ProjectLibrary.Calc
                                         displayNewMathOperator = '/';
                                         break;
                                     case '5':
-                                        newMathOperator = MathOperator.SquareRoot;
+                                        newMathOperator = MathOperator.NthSquareRoot;
                                         displayNewMathOperator = '√';
                                         break;
                                     case '6':
                                         newMathOperator = MathOperator.Modulus;
                                         displayNewMathOperator = '%';
+                                        break;
+                                    case '7':
+                                        newMathOperator = MathOperator.SquareRoot;
+                                        displayNewMathOperator = '√';
                                         break;
                                     default:
                                         Console.Clear();
@@ -87,44 +97,51 @@ namespace ProjectLibrary.Calc
                                 {
                                     Console.WriteLine();
                                     Console.Write("Enter a second number: ");
-                                    string? secondInput = Console.ReadLine();
+                                    string? secondNumberInput = Console.ReadLine();
 
-                                    if (decimal.TryParse(secondInput, out decimal newB))
+                                    if (decimal.TryParse(secondNumberInput, out decimal newB))
                                     {
                                         Console.WriteLine($"{newA} {displayNewMathOperator} {newB}");
 
-                                        Addition addition = new Addition();
-                                        Subtraction subtraction = new Subtraction();
-                                        Times times = new Times();
-                                        Division division = new Division();
-                                        Modulus modulus = new Modulus();
+                                        CalcStrategy calcStrategy = new CalcStrategy();
 
                                         decimal newSum = 0;
                                         DateOnly newDay = DateOnly.FromDateTime(DateTime.Now);
 
                                         if (newMathOperator == MathOperator.Addition)
                                         {
-                                            newSum = addition.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Addition());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
                                         else if (newMathOperator == MathOperator.Subtraction)
                                         {
-                                            newSum = subtraction.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Subtraction());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
                                         else if (newMathOperator == MathOperator.Times)
                                         {
-                                            newSum = times.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Times());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
                                         else if (newMathOperator == MathOperator.Division)
                                         {
-                                            newSum = division.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Division());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
+                                        }
+                                        else if (newMathOperator == MathOperator.NthSquareRoot)
+                                        {
+                                            calcStrategy.setCalcStrategy(new NthSquareRoot());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
+                                            Console.WriteLine($"Answer: {newSum:F2}");
                                         }
                                         else if (newMathOperator == MathOperator.Modulus)
                                         {
-                                            newSum = modulus.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Modulus());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
 
@@ -152,6 +169,11 @@ namespace ProjectLibrary.Calc
                                             isRunning = false;
                                             Console.WriteLine();
                                         }
+                                    }
+                                    else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        isRunning = false;
+                                        Console.Clear();
                                     }
                                     else
                                     {
@@ -193,6 +215,11 @@ namespace ProjectLibrary.Calc
                                     }
                                 }
                             }
+                            else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
+                            }
                             else
                             {
                                 Console.Clear();
@@ -208,6 +235,11 @@ namespace ProjectLibrary.Calc
                             Console.WriteLine($"No Active Calculation found with Id {calculationId}");
                             Console.ResetColor();
                         }
+                    }
+                    else if (string.Equals(userInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {
