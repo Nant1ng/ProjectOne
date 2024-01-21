@@ -19,7 +19,19 @@ namespace ProjectLibrary.Data
             DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 
             if (!dbContext.Calculator.Any(c => c.Id == 1))
-                dbContext.Calculator.Add(new Calculator(1, MathOperator.Addition, '+', 1, 2, today));
+                dbContext.Calculator.Add(new Calculator(0, MathOperator.Addition, '+', 1, 2, today));
+            if (!dbContext.Calculator.Any(c => c.Id == 2))
+                dbContext.Calculator.Add(new Calculator(3, MathOperator.Subtraction, '-', 2, 1, today));
+            if (!dbContext.Calculator.Any(c => c.Id == 3))
+                dbContext.Calculator.Add(new Calculator(1, MathOperator.Times, '*', 1, 1, today));
+            if (!dbContext.Calculator.Any(c => c.Id == 4))
+                dbContext.Calculator.Add(new Calculator(1, MathOperator.Division, '/', 1, 1, today));
+            if (!dbContext.Calculator.Any(c => c.Id == 5))
+                dbContext.Calculator.Add(new Calculator(3, MathOperator.NthSquareRoot, '√', 27, 3, today));
+            if (!dbContext.Calculator.Any(c => c.Id == 6))
+                dbContext.Calculator.Add(new Calculator(10, MathOperator.Modulus, '%', 3, 1, today));
+            if (!dbContext.Calculator.Any(c => c.Id == 7))
+                dbContext.Calculator.Add(new Calculator(4, MathOperator.SquareRoot, '+', null, 2, today));
         }
         private void PopulateRockPaperScissor(AppDBContext dbContext)
         {
@@ -27,6 +39,10 @@ namespace ProjectLibrary.Data
 
             if (!dbContext.RockPaperScissorGame.Any(rps => rps.Id == 1))
                 dbContext.RockPaperScissorGame.Add(new RockPaperSicssorGame(RockPaperScissor.Rock, RockPaperScissor.Rock, Result.Draw, today));
+            if (!dbContext.RockPaperScissorGame.Any(rps => rps.Id == 2))
+                dbContext.RockPaperScissorGame.Add(new RockPaperSicssorGame(RockPaperScissor.Rock, RockPaperScissor.Scissor, Result.Win, today));
+            if (!dbContext.RockPaperScissorGame.Any(rps => rps.Id == 3))
+                dbContext.RockPaperScissorGame.Add(new RockPaperSicssorGame(RockPaperScissor.Rock, RockPaperScissor.Paper, Result.Lose, today));
         }
         private void PopulateShape(AppDBContext dbContext)
         {
