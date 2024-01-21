@@ -35,4 +35,5 @@ Projekt Dagbok.
 	Blev klar med Update för Calculator, så hela CRUD är klar för den. Lade även till ett interface ICalc. Blev även klar med hela 	CRUD för Shapes. Gjorde också så att numren formateras till att bara ha max två decimaler, samt fixade lite stavfel här och där.
 
 2024-01-21: 
-	Gjorde lite små ändringare här och där, samt gjorde en ReadMe-fil. Trodde deadline var idag  23:59 men det var idag 00:00, så 	hoppas kunden inte blir allt för onöjd med det.
+	Gjorde lite små ändringare här och där, samt gjorde en ReadMe-fil. Trodde deadline var idag  23:59 men det var idag 00:00, så hoppas kunden inte blir allt för onöjd med det.
+	La även till så att man kan gå tillbacka genom att skriva exit, hade glömt bort att kunden ville ha det så la till det nu i sista sekunden.
