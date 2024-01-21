@@ -45,8 +45,8 @@ namespace ProjectLibrary.RPS
                         dbContext.RockPaperScissorGame.Add(newGame);
                         dbContext.SaveChanges();
 
-                        UpdateStats statsUpdater = new UpdateStats();
-                        statsUpdater.UpdateGameStats(options);
+                        UpdateStats statsUpdate = new UpdateStats();
+                        statsUpdate.UpdateGameStats(options);
 
                         string message = "Do you want to play again?";
                         string restart = goAgain.Restart(message);

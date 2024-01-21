@@ -24,8 +24,8 @@ namespace ProjectOne
                 var dataPopulator = new DataPopulator();
                 dataPopulator.MigrateAndPopulate(dbContext);
 
-                UpdateStats statsUpdater = new UpdateStats();
-                statsUpdater.UpdateGameStats(options);
+                UpdateStats statsUpdate = new UpdateStats();
+                statsUpdate.UpdateGameStats(options);
             }
 
             do
