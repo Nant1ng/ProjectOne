@@ -47,13 +47,17 @@ namespace ProjectLibrary.Geometry
                     if (shape != TypeOfShape.Triangle && shape != TypeOfShape.Parallelogram)
                     {
                         Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Write exit if you want to go back.");
                         Console.Write($"Enter the Lenght of the {shape}: ");
+                        string? firstNumberInput = Console.ReadLine();
 
-                        if (double.TryParse(Console.ReadLine(), out double lenght) && lenght > 0)
+                        if (double.TryParse(firstNumberInput, out double lenght) && lenght > 0)
                         {
                             Console.Write($"Enter the Width of the {shape}: ");
+                            string? secondNumberInput = Console.ReadLine();
 
-                            if (double.TryParse(Console.ReadLine(), out double width) && width > 0)
+                            if (double.TryParse(secondNumberInput, out double width) && width > 0)
                             {
                                 RectanglePerimeter rectanglePerimeter = new RectanglePerimeter();
                                 RectangleArea rectangleArea = new RectangleArea();
@@ -99,6 +103,11 @@ namespace ProjectLibrary.Geometry
                                     Console.Clear();
                                 }
                             }
+                            else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
+                            }
                             else
                             {
                                 Console.Clear();
@@ -106,6 +115,11 @@ namespace ProjectLibrary.Geometry
                                 Console.WriteLine("Invalid input: Please enter a valid number.");
                                 Console.ResetColor();
                             }
+                        }
+                        else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                        {
+                            isRunning = false;
+                            Console.Clear();
                         }
                         else
                         {
@@ -118,17 +132,21 @@ namespace ProjectLibrary.Geometry
                     else if (shape == TypeOfShape.Parallelogram)
                     {
                         Console.WriteLine();
+                        Console.WriteLine("Write exit if you want to go back.");
                         Console.Write($"Enter the Lenght of the {shape}: ");
+                        string? firstNumberInput = Console.ReadLine();
 
-                        if (double.TryParse(Console.ReadLine(), out double lenght) && lenght > 0)
+                        if (double.TryParse(firstNumberInput, out double lenght) && lenght > 0)
                         {
                             Console.Write($"Enter the Width of the {shape}: ");
+                            string? secondNumberInput = Console.ReadLine();
 
-                            if (double.TryParse(Console.ReadLine(), out double width) && width > 0)
+                            if (double.TryParse(secondNumberInput, out double width) && width > 0)
                             {
                                 Console.Write($"Enter the Left Cathetus of the {shape}: ");
+                                string? thirdNumberInput = Console.ReadLine();
 
-                                if (double.TryParse(Console.ReadLine(), out double cathetusLeft) && cathetusLeft > 0)
+                                if (double.TryParse(thirdNumberInput, out double cathetusLeft) && cathetusLeft > 0)
                                 {
                                     ParallelogramPerimeter parallelogramPerimeter = new ParallelogramPerimeter();
                                     ParallelogramArea parallelogramArea = new ParallelogramArea();
@@ -161,6 +179,11 @@ namespace ProjectLibrary.Geometry
                                         Console.Clear();
                                     }
                                 }
+                                else if (string.Equals(thirdNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    isRunning = false;
+                                    Console.Clear();
+                                }
                                 else
                                 {
                                     Console.Clear();
@@ -169,6 +192,11 @@ namespace ProjectLibrary.Geometry
                                     Console.ResetColor();
                                 }
                             }
+                            else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
+                            }
                             else
                             {
                                 Console.Clear();
@@ -176,6 +204,11 @@ namespace ProjectLibrary.Geometry
                                 Console.WriteLine("Invalid input: Please enter a valid number.");
                                 Console.ResetColor();
                             }
+                        }
+                        else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                        {
+                            isRunning = false;
+                            Console.Clear();
                         }
                         else
                         {
@@ -188,21 +221,26 @@ namespace ProjectLibrary.Geometry
                     else if (shape == TypeOfShape.Triangle)
                     {
                         Console.WriteLine();
+                        Console.WriteLine("Write exit if you want to go back.");
                         Console.Write($"Enter the Lenght of the {shape}: ");
+                        string? firstNumberInput = Console.ReadLine();
 
-                        if (double.TryParse(Console.ReadLine(), out double lenght) && lenght > 0)
+                        if (double.TryParse(firstNumberInput, out double lenght) && lenght > 0)
                         {
                             Console.Write($"Enter the Width of the {shape}: ");
+                            string? secondNumberInput = Console.ReadLine();
 
-                            if (double.TryParse(Console.ReadLine(), out double width) && width > 0)
+                            if (double.TryParse(secondNumberInput, out double width) && width > 0)
                             {
                                 Console.Write($"Enter the Left Cathetus of the {shape}: ");
+                                string? thirdNumberInput = Console.ReadLine();
 
-                                if (double.TryParse(Console.ReadLine(), out double cathetusLeft) && cathetusLeft > 0)
+                                if (double.TryParse(thirdNumberInput, out double cathetusLeft) && cathetusLeft > 0)
                                 {
                                     Console.Write($"Enter the Right Cathetus of the {shape}: ");
+                                    string? fourthNumberInput = Console.ReadLine();
 
-                                    if (double.TryParse(Console.ReadLine(), out double cathetusRight) && cathetusRight > 0)
+                                    if (double.TryParse(fourthNumberInput, out double cathetusRight) && cathetusRight > 0)
                                     {
                                         TrianglePerimeter trianglePerimeter = new TrianglePerimeter();
                                         TriangleArea triangleArea = new TriangleArea();
@@ -235,6 +273,11 @@ namespace ProjectLibrary.Geometry
                                             Console.Clear();
                                         }
                                     }
+                                    else if (string.Equals(fourthNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        isRunning = false;
+                                        Console.Clear();
+                                    }
                                     else
                                     {
                                         Console.Clear();
@@ -242,6 +285,11 @@ namespace ProjectLibrary.Geometry
                                         Console.WriteLine("Invalid input: Please enter a valid number.");
                                         Console.ResetColor();
                                     }
+                                }
+                                else if (string.Equals(thirdNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    isRunning = false;
+                                    Console.Clear();
                                 }
                                 else
                                 {
@@ -251,6 +299,11 @@ namespace ProjectLibrary.Geometry
                                     Console.ResetColor();
                                 }
                             }
+                            else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
+                            }
                             else
                             {
                                 Console.Clear();
@@ -258,6 +311,11 @@ namespace ProjectLibrary.Geometry
                                 Console.WriteLine("Invalid input: Please enter a valid number.");
                                 Console.ResetColor();
                             }
+                        }
+                        else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                        {
+                            isRunning = false;
+                            Console.Clear();
                         }
                         else
                         {

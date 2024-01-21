@@ -16,6 +16,9 @@ namespace ProjectLibrary.Calc
                 do
                 {
                     Console.WriteLine("Update a Calculation.");
+                    Console.WriteLine("Write exit if you want to go back.");
+                    Console.WriteLine();
+
                     foreach (Calculator c in dbContext.Calculator.Where(c => c.IsActive == true))
                     {
                         if (c.MathOperator == MathOperator.SquareRoot)
@@ -27,7 +30,9 @@ namespace ProjectLibrary.Calc
                     Console.WriteLine();
                     Console.Write("Enter a Id of a Calculation you want to Update: ");
 
-                    if (int.TryParse(Console.ReadLine(), out int calculationId))
+                    string? userInput = Console.ReadLine();
+
+                    if (int.TryParse(userInput, out int calculationId))
                     {
                         Calculator? calculationToUpdate = dbContext.Calculator.Find(calculationId);
 
@@ -35,8 +40,9 @@ namespace ProjectLibrary.Calc
                         {
                             Console.WriteLine($"Update Calculation with Id {calculationId}");
                             Console.Write("Enter a number: ");
+                            string? firstNumberInput = Console.ReadLine();
 
-                            if (decimal.TryParse(Console.ReadLine(), out decimal newA))
+                            if (decimal.TryParse(firstNumberInput, out decimal newA))
                             {
                                 Console.WriteLine("Choose an Operator:");
 
@@ -91,9 +97,9 @@ namespace ProjectLibrary.Calc
                                 {
                                     Console.WriteLine();
                                     Console.Write("Enter a second number: ");
-                                    string? secondInput = Console.ReadLine();
+                                    string? secondNumberInput = Console.ReadLine();
 
-                                    if (decimal.TryParse(secondInput, out decimal newB))
+                                    if (decimal.TryParse(secondNumberInput, out decimal newB))
                                     {
                                         Console.WriteLine($"{newA} {displayNewMathOperator} {newB}");
 
@@ -164,6 +170,11 @@ namespace ProjectLibrary.Calc
                                             Console.WriteLine();
                                         }
                                     }
+                                    else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        isRunning = false;
+                                        Console.Clear();
+                                    }
                                     else
                                     {
                                         Console.Clear();
@@ -204,6 +215,11 @@ namespace ProjectLibrary.Calc
                                     }
                                 }
                             }
+                            else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
+                            }
                             else
                             {
                                 Console.Clear();
@@ -219,6 +235,11 @@ namespace ProjectLibrary.Calc
                             Console.WriteLine($"No Active Calculation found with Id {calculationId}");
                             Console.ResetColor();
                         }
+                    }
+                    else if (string.Equals(userInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {

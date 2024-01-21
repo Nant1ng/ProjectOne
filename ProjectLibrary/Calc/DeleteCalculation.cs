@@ -15,6 +15,8 @@ namespace ProjectLibrary.Calc
                 do
                 {
                     Console.WriteLine("Delete a Calculation.");
+                    Console.WriteLine("Write exit if you want to go back.");
+                    Console.WriteLine();
 
                     foreach (Calculator c in dbContext.Calculator.Where(c => c.IsActive))
                     {
@@ -26,8 +28,9 @@ namespace ProjectLibrary.Calc
 
                     Console.WriteLine();
                     Console.Write("Enter the Id of a Calculation you want to Delete: ");
+                    string? userInput = Console.ReadLine();
 
-                    if (int.TryParse(Console.ReadLine(), out int calculationId))
+                    if (int.TryParse(userInput, out int calculationId))
                     {
                         Calculator? calculationToDelete = dbContext.Calculator.Find(calculationId);
 
@@ -60,6 +63,11 @@ namespace ProjectLibrary.Calc
                             Console.WriteLine($"No Active Calculation found with Id {calculationId}");
                             Console.ResetColor();
                         }
+                    }
+                    else if (string.Equals(userInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {

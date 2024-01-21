@@ -16,9 +16,13 @@ namespace ProjectLibrary.Calc
                 do
                 {
                     Console.WriteLine("Time to do The Math!");
+                    Console.WriteLine("Write exit if you want to go back.");
+                    Console.WriteLine();
                     Console.Write("Enter a Number: ");
 
-                    if (decimal.TryParse(Console.ReadLine(), out decimal a))
+                    string? firstNumberInput = Console.ReadLine();
+
+                    if (decimal.TryParse(firstNumberInput, out decimal a))
                     {
                         Console.WriteLine("Choose an Operator:");
 
@@ -74,8 +78,9 @@ namespace ProjectLibrary.Calc
                         {
                             Console.WriteLine();
                             Console.Write("Enter a second number: ");
+                            string? secondNumberInput = Console.ReadLine();
 
-                            if (decimal.TryParse(Console.ReadLine(), out decimal b))
+                            if (decimal.TryParse(secondNumberInput, out decimal b))
                             {
                                 Console.WriteLine($"{a} {displayMathOperator} {b}");
 
@@ -141,6 +146,11 @@ namespace ProjectLibrary.Calc
                                     Console.Clear();
                                 }
                             }
+                            else if (string.Equals(secondNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                            {
+                                isRunning = false;
+                                Console.Clear();
+                            }
                             else
                             {
                                 Console.Clear();
@@ -176,6 +186,11 @@ namespace ProjectLibrary.Calc
                                 Console.Clear();
                             }
                         }
+                    }
+                    else if (string.Equals(firstNumberInput, "exit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isRunning = false;
+                        Console.Clear();
                     }
                     else
                     {
