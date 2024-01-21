@@ -57,3 +57,21 @@
     * Computes the remainder of the division of the first decimal number by the second.
   * SquareRoot:
     * Calculates the square root of a given decimal number.
+
+## Rock Paper Scissor
+* Description: An interactive game where users can play Rock Paper Scissors against the computer. The outcomes of the games (win/lose/draw) are tracked and stored.
+* Methodologies/Patterns/Principles Used:
+* Randomization: For the computer's choices, ensuring unpredictability in each game.
+MVC Pattern (Model-View-Controller): Applied to separate the game logic (model), user interface (view), and the control flow (controller).
+* Data Persistence: Game results are stored and retrieved from a database, demonstrating Create and Read operations from CRUD. Currently, the system is designed to maintain a permanent record of each game, hence Update and Delete operations are not implemented in this module.
+* Methods:
+  * Game:
+    * This is the main method that orchestrates the Rock Paper Scissors game. It initiates each round of the game, invokes methods to get choices from the user and the computer, determines the result of each round, and updates the game statistics.
+  * GetUserChoice:
+    * Prompts the user to select an option (Rock, Paper, or Scissors). It ensures the user input is valid and converts it into a format that can be used in the game logic.
+  * GetComputerChoice:
+    * Randomly generates the computer's selection for the game, choosing between Rock, Paper, or Scissors. This method ensures a fair and unpredictable choice by the computer in each round.
+  * DetermineResult:
+    * Compares the choices made by the user and the computer to determine the outcome of a game round. It follows the standard rules of Rock Paper Scissors to ascertain whether the round results in a win, loss, or draw for the user.
+  * UpdateGameStats:
+    * After each round, this method updates the game statistics, including the number of games played, wins, losses, and draws. It ensures the game history is accurately recorded and allows for statistical analysis of the player's performance over time.
