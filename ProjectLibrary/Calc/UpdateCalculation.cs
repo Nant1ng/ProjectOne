@@ -31,7 +31,7 @@ namespace ProjectLibrary.Calc
                     {
                         Calculator? calculationToUpdate = dbContext.Calculator.Find(calculationId);
 
-                        if (calculationToUpdate != null && calculationToUpdate.IsActive == true)
+                        if (calculationToUpdate != null && calculationToUpdate.IsActive)
                         {
                             Console.WriteLine($"Update Calculation with Id {calculationId}");
                             Console.Write("Enter a number: ");
@@ -69,12 +69,16 @@ namespace ProjectLibrary.Calc
                                         displayNewMathOperator = '/';
                                         break;
                                     case '5':
-                                        newMathOperator = MathOperator.SquareRoot;
+                                        newMathOperator = MathOperator.NthSquareRoot;
                                         displayNewMathOperator = '√';
                                         break;
                                     case '6':
                                         newMathOperator = MathOperator.Modulus;
                                         displayNewMathOperator = '%';
+                                        break;
+                                    case '7':
+                                        newMathOperator = MathOperator.SquareRoot;
+                                        displayNewMathOperator = '√';
                                         break;
                                     default:
                                         Console.Clear();
@@ -93,38 +97,45 @@ namespace ProjectLibrary.Calc
                                     {
                                         Console.WriteLine($"{newA} {displayNewMathOperator} {newB}");
 
-                                        Addition addition = new Addition();
-                                        Subtraction subtraction = new Subtraction();
-                                        Times times = new Times();
-                                        Division division = new Division();
-                                        Modulus modulus = new Modulus();
+                                        CalcStrategy calcStrategy = new CalcStrategy();
 
                                         decimal newSum = 0;
                                         DateOnly newDay = DateOnly.FromDateTime(DateTime.Now);
 
                                         if (newMathOperator == MathOperator.Addition)
                                         {
-                                            newSum = addition.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Addition());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
                                         else if (newMathOperator == MathOperator.Subtraction)
                                         {
-                                            newSum = subtraction.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Subtraction());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
                                         else if (newMathOperator == MathOperator.Times)
                                         {
-                                            newSum = times.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Times());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
                                         else if (newMathOperator == MathOperator.Division)
                                         {
-                                            newSum = division.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Division());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
+                                        }
+                                        else if (newMathOperator == MathOperator.NthSquareRoot)
+                                        {
+                                            calcStrategy.setCalcStrategy(new NthSquareRoot());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
+                                            Console.WriteLine($"Answer: {newSum:F2}");
                                         }
                                         else if (newMathOperator == MathOperator.Modulus)
                                         {
-                                            newSum = modulus.Calc(newA, newB);
+                                            calcStrategy.setCalcStrategy(new Modulus());
+                                            newSum = calcStrategy.ExecuteCalcStrategy(newA, newB);
                                             Console.WriteLine($"Answer: {newSum}");
                                         }
 

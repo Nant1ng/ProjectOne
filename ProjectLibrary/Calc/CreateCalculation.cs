@@ -51,12 +51,16 @@ namespace ProjectLibrary.Calc
                                 displayMathOperator = '/';
                                 break;
                             case '5':
-                                mathOperator = MathOperator.SquareRoot;
+                                mathOperator = MathOperator.NthSquareRoot;
                                 displayMathOperator = '√';
                                 break;
                             case '6':
                                 mathOperator = MathOperator.Modulus;
                                 displayMathOperator = '%';
+                                break;
+                            case '7':
+                                mathOperator = MathOperator.SquareRoot;
+                                displayMathOperator = '√';
                                 break;
                             default:
                                 Console.Clear();
@@ -75,38 +79,45 @@ namespace ProjectLibrary.Calc
                             {
                                 Console.WriteLine($"{a} {displayMathOperator} {b}");
 
-                                Addition addition = new Addition();
-                                Subtraction subtraction = new Subtraction();
-                                Times times = new Times();
-                                Division division = new Division();
-                                Modulus modulus = new Modulus();
+                                CalcStrategy calcStrategy = new CalcStrategy();
 
                                 decimal sum = 0;
                                 DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 
                                 if (mathOperator == MathOperator.Addition)
                                 {
-                                    sum = addition.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Addition());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Subtraction)
                                 {
-                                    sum = subtraction.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Subtraction());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Times)
                                 {
-                                    sum = times.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Times());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Division)
                                 {
-                                    sum = division.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Division());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
+                                    Console.WriteLine($"Answer: {sum:F2}");
+                                }
+                                else if (mathOperator == MathOperator.NthSquareRoot)
+                                {
+                                    calcStrategy.setCalcStrategy(new NthSquareRoot());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
                                 else if (mathOperator == MathOperator.Modulus)
                                 {
-                                    sum = modulus.Calc(a, b);
+                                    calcStrategy.setCalcStrategy(new Modulus());
+                                    sum = calcStrategy.ExecuteCalcStrategy(a, b);
                                     Console.WriteLine($"Answer: {sum:F2}");
                                 }
 

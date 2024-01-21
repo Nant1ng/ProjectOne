@@ -6,7 +6,8 @@
         Subtraction,
         Times,
         Division,
+        NthSquareRoot,
+        Modulus,
         SquareRoot,
-        Modulus
     }
 }
